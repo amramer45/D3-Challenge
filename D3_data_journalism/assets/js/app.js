@@ -307,6 +307,12 @@ function makeResponsive() {
 
                     if (xSelect === "poverty") {
                         povertyLabel.classed("active", true).classed("inactive", false);
+                        ageLabel.classed("active", false).classed("inactive", true);
+                        incomeLabel.classed("active", false).classed("inactive", true);
+                    } else if (xSelect === "age") {
+                        povertyLabel.classed("active", false).classed("inactive", true);
+                        ageLabel.classed("active", true).classed("inactive", false);
+                        incomeLabel.classed("active", true).classed("inactive", false);
                     }
                 }
             })
