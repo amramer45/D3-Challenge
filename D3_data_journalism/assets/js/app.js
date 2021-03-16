@@ -195,5 +195,27 @@ function makeResponsive() {
         var leftAxis = d3.axisLeft(yLinearScale);
 
         //append x axis
+        var xAxis = chartGroup.append("g")
+            .classed("x-axis", true)
+            .attr("transform", `translate(0, ${chartHeight})`)
+            .call(bottomAxis);
+        
+        //append y axis
+        var yAxis = chartGroup.append("g")
+            .classed("y-axis", true)
+            .call(leftAxis);
+
+        //append circles
+        var circlesGroup = chartGroup.selectAll("circle")
+            .data(censusData)
+            .enter()
+            .append("circle")
+            .classed("stateCircle", true)
+            .attr("cx", d => xLinearScale(d[xSelect]))
+            .attr("cy", d => yLinearScale(d[ySelect]))
+            .attr("r", 12)
+            .attr("opacity", ".5");
+        
+        //append initial text
     })
 }
