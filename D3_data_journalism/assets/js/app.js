@@ -63,7 +63,7 @@ function makeResponsive() {
     }
 
     //Function used for updating xAxis upon click
-    function renderAxesX(newXScale, xAxis) {
+    function renderAxisX(newXScale, xAxis) {
         var bottomAxis = d3.axisBottom(newXScale);
 
         xAxis.transition()
@@ -74,7 +74,7 @@ function makeResponsive() {
     }
 
     //Function used for updating yAxis upon click
-    function renderAxesY(newYScale, yAxis) {
+    function renderAxisY(newYScale, yAxis) {
         var leftAxis = d3.axisLeft(newYScale);
 
         yAxis.transition()
@@ -84,5 +84,5 @@ function makeResponsive() {
         return yAxis;
     }
 
-    
+
 }
