@@ -313,8 +313,17 @@ function makeResponsive() {
                         povertyLabel.classed("active", false).classed("inactive", true);
                         ageLabel.classed("active", true).classed("inactive", false);
                         incomeLabel.classed("active", true).classed("inactive", false);
+                    } else {
+                        povertyLabel.classed("active", false).classed("inactive", true);
+                        ageLabel.classed("active", false).classed("inactive", true);
+                        incomeLabel.classed("active", true).classed("inactive", false);
                     }
                 }
-            })
+            });
+    //y axis labels event listener
+    yLabelsGroup.selectAll("text")
+        .on("click", function () {
+            var value = d3.select(this).attr("value");
+        })
     })
 }
