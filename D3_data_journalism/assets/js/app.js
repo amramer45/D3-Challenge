@@ -16,7 +16,7 @@ function makeResponsive() {
     var chartMargin = {
         top: 20,
         right: 40,
-        bottom: 60,
+        bottom: 120,
         left: 100,
     };
 
@@ -232,13 +232,21 @@ function makeResponsive() {
         var xLabelsGroup = chartGroup.append("g")
             .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20 + chartMargin.top})`);
         
-        var povertyLabel = xLabelsGRoup.append("text")
+        var povertyLabel = xLabelsGroup.append("text")
             .classed("aText", true)
             .classed("active", true)
             .attr("x", 0)
             .attr("y", 20)
             .attr("value", "poverty")
             .text("In Poverty (%)");
+        
+        var ageLabel = xLabelsGroup.append("text")
+            .classed("aText", true)
+            .classed("inactive", true)
+            .attr("x", 0)
+            .attr("y", 40)
+            .attr("value", "age")
+            .text("Age (Median)");
         
         var incomeLabel = xLabelsGroup.append("text")
             .classed("aText", true)
