@@ -12,6 +12,7 @@ function makeResponsive() {
     var svgWidth = 960;
     var svgHeight = 620;
 
+    //Define chart margins
     var chartMargin = {
         top: 20,
         right: 40,
@@ -19,6 +20,7 @@ function makeResponsive() {
         left: 100,
     };
 
+    //Definte chart area dimensions
     var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
     var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
@@ -28,7 +30,35 @@ function makeResponsive() {
         .attr("width", svgWidth)
         .attr("height", svgHeight);
     
+    //Append a group to the SVG area and shift
     var chartGroup = svg.append("g")
         .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
+    //Select variables
+    var xSelect = "poverty";
+    var ySelect = "healthcare"
+
+    //Function used for updating x-scale var upon clicking on axis label
+    function xScale(censusData, xSelect) {
+        //Create scales
+        var xLinearScale = d3.scaleLinear()
+            .domain([d3.min(censusData, d => d[xSelect]) * 0.8,
+                d3.max(censusData, d => d[xSelect]) * 1.2
+            ])
+            .range([0, chartWidth]);
+        
+        return xLinearScale;
+    }
+
+    //Function for the y-scale
+    function yScale(censusData, ySelect) {
+        //Create scales
+        var yLinearScale = d3.scaleLinear()
+            .domain([d3.min(censusData, d => d[ySelect]) * 0.8,
+                d3.max(censusData, d => d[ySelect]) * 1.2
+            ])
+            .range([chartHeight, 0]);
+        
+        return yLinearScale;
+    }
 }
