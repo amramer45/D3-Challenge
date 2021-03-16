@@ -73,7 +73,7 @@ function makeResponsive() {
         return xAxis;
     }
 
-    //Function used for updating yAxis upon click
+    //Function for the yAxis
     function renderAxisY(newYScale, yAxis) {
         var leftAxis = d3.axisLeft(newYScale);
 
@@ -84,5 +84,27 @@ function makeResponsive() {
         return yAxis;
     }
 
+    //Function for updating circles group
+    function renderCircles(circlesGroup, newXScale, xSelect, newYScale, ySelect) {
 
+        circlesGroup.transition()
+            .duration(1000)
+            .attr("cx", data => newXScale(data[xSelect]))
+            .attr("cy", data => newYScale(data[ySelect]));
+
+        return circlesGroup;
+    }
+
+    //Function for updating state labels
+    function renderText(textGroup, newXScale, xSelect, newYScale, ySelect) {
+
+        textGroup.transition()
+        .duration(1000)
+        .attr("x", d => newXScale(d[xSelect]))
+        .attr("y", d => newYScale(d[ySelect]));
+
+    return textGroup;
+    }
+
+    //
 }
