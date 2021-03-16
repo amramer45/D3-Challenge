@@ -61,4 +61,28 @@ function makeResponsive() {
         
         return yLinearScale;
     }
+
+    //Function used for updating xAxis upon click
+    function renderAxesX(newXScale, xAxis) {
+        var bottomAxis = d3.axisBottom(newXScale);
+
+        xAxis.transition()
+            .duration(1000)
+            .call(bottomAxis);
+
+        return xAxis;
+    }
+
+    //Function used for updating yAxis upon click
+    function renderAxesY(newYScale, yAxis) {
+        var leftAxis = d3.axisLeft(newYScale);
+
+        yAxis.transition()
+            .duration(1000)
+            .call(leftAxis);
+
+        return yAxis;
+    }
+
+    
 }
