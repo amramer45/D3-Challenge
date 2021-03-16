@@ -106,5 +106,23 @@ function makeResponsive() {
     return textGroup;
     }
 
-    //
+    //Function to stylize x-axis values for tooltips
+    function styleX(value, xSelect) {
+
+        //stylize based on chosen variable
+        //Poverty
+        if (xSelect === 'poverty') {
+            return `${value}%`;
+        }
+        //Household income
+        else if (xSelect === 'income') {
+            return `$${value}`;
+        }
+        //Age
+        else {
+            return `${value}`;
+        }
+    }
+
+    
 }
