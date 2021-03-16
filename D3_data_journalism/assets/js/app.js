@@ -124,5 +124,61 @@ function makeResponsive() {
         }
     }
 
-    
+    //Function used for updating circles with new tooltip
+    function updateToolTip(xSelect, ySelect, circlesGroup) {
+
+        //select x label
+        //poverty
+        if (xSelect === 'poverty') {
+            var xLabel = "Poverty:";
+        }
+        //Household income
+        else if (xSelect === 'income') {
+            var xLabel = "Median Income:";
+        }
+        //Age
+        else {
+            var xLabel = "Age:";
+        }
+
+        //slect y label
+        //percentage lacking healthcare
+        if (ySelect === 'healthcare') {
+            var yLabel = "No Healthcare:";
+        }
+        //percentage obese
+        else if (ySelect === 'obesity') {
+            var yLabel = "Obesity:";
+        }
+        //smoking percentage
+        else {
+            var yLabel = "Smokers:";
+        }
+
+        //create tooltip
+        var toolTip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([-8, 0])
+            .html(function(d) {
+                return (`${d.state}<br>${xLabel} ${styleX(d[xSelect], xSelect)}<br>${yLabel} ${d[ySelect]}%`);
+            });
+
+        circlesGroup.call(toolTip);
+
+        //add events
+        circlesGroup.on("mouseover", toolTip.show)
+            .on("mouseout", toolTip.hide);
+
+        return circlesGroup;
+    }
+
+    //Retrieve csv data
+    d3.csv("./assets/data/data.csv").then(function(censusData) {
+        console.log(censusData);
+
+        //parse data
+        censusData.forEach(function(data) {
+            data.obesity = +data.obesity; 
+        })
+    })
 }
