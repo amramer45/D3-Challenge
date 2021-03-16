@@ -179,6 +179,21 @@ function makeResponsive() {
         //parse data
         censusData.forEach(function(data) {
             data.obesity = +data.obesity; 
-        })
+            data.income = +data.income;
+            data.smokes = +data.smokes;
+            data.age = +data.age;
+            data.healthcare = +data.healthcare;
+            data.poverty = +data.poverty;
+        });
+
+        //create first linear scales
+        var xLinearScale = xScale(censusData, xSelect);
+        var yLinearScale = yScale(censusData, ySelect);
+
+        //create initial axis functions
+        var bottomAxis = d3.axisBottom(xLinearScale);
+        var leftAxis = d3.axisLeft(yLinearScale);
+
+        //append x axis
     })
 }
