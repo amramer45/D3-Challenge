@@ -293,18 +293,26 @@ function makeResponsive() {
 
                 //check if value is same as current axis
                 if (value != xSelect) {
+
+                    //replace xSelect with value
                     xSelect = value;
 
+                    //update x scale for new data
                     xLinearScale = xScale(censusData, xSelect);
 
+                    //update x axis with transition
                     xAxis = renderAxisX(xLinearScale, xAxis);
 
+                    //update circles with new x values
                     circlesGroup = renderCircles(circlesGroup, xLinearScale, xSelect, yLinearScale, ySelect);
 
+                    //update text with new x values
                     textGroup = renderText(textGroup, xLinearScale, xSelect, yLinearScale, ySelect);
 
+                    //update tooltips with new info
                     circlesGroup = updateToolTip(xSelect, ySelect, circlesGroup);
 
+                    //change classes to change bold text
                     if (xSelect === "poverty") {
                         povertyLabel.classed("active", true).classed("inactive", false);
                         ageLabel.classed("active", false).classed("inactive", true);
@@ -355,3 +363,9 @@ function makeResponsive() {
         });
     })
 }
+
+//call main function
+makeResponsive();
+
+//Event listener for window resize
+d3.select(window).on("resize", makeResponsive);
