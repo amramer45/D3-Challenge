@@ -324,6 +324,34 @@ function makeResponsive() {
     yLabelsGroup.selectAll("text")
         .on("click", function () {
             var value = d3.select(this).attr("value");
-        })
+
+            if (value != ySelect) {
+                ySelect = value;
+
+                yLinearScale = yScale(censusData, ySelect);
+
+                xAxis = renderAxisY(yLinearScale, yAxis);
+
+                circlesGroup = renderCircles(circlesGroup, xLinearScale, xSelect, yLinearScale, ySelect);
+
+                textGroup = renderText(textGroup, xLinearScale, xSelect, yLinearScale, ySelect);
+
+                circlesGroup = updateToolTip(xSelect, ySelect, circlesGroup);
+
+                if (ySelect === "obesity") {
+                    obesityLabel.classed("active", true).classed("inactive", false);
+                    smokesLabel.classed("active", false).classed("inactive", true);
+                    healthcareLabel.classed("active", false).classed("inactive", true);
+                } else if (xSelect === "age") {
+                    obesityLabel.classed("active", false).classed("inactive", true);
+                    smokesLabel.classed("active", true).classed("inactive", false);
+                    healthcareLabel.classed("active", true).classed("inactive", false);
+                } else {
+                    obesityLabel.classed("active", false).classed("inactive", true);
+                    smokesLabel.classed("active", false).classed("inactive", true);
+                    healthcareLabel.classed("active", true).classed("inactive", false);
+                }
+            }
+        });
     })
 }
