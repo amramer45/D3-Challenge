@@ -284,7 +284,7 @@ function makeResponsive() {
             .classed("aText", true)
             .classed("inactive", true)
             .attr("x", 0)
-            .attr("y", 0 -60)
+            .attr("y", 0 - 60)
             .attr("dy", "1em")
             .attr("transform", "rotate(-90)")
             .attr("value", "obesity")
@@ -295,7 +295,7 @@ function makeResponsive() {
 
         //x axis labels event listener
         xLabelsGroup.selectAll("text")
-            .on("click", function () {
+            .on("click", function() {
                 //get value of selection
                 var value = d3.select(this).attr("value");
 
@@ -338,7 +338,7 @@ function makeResponsive() {
             });
     //y axis labels event listener
     yLabelsGroup.selectAll("text")
-        .on("click", function () {
+        .on("click", function() {
             //get value of selection
             var value = d3.select(this).attr("value");
 
@@ -368,7 +368,7 @@ function makeResponsive() {
                     obesityLabel.classed("active", true).classed("inactive", false);
                     smokesLabel.classed("active", false).classed("inactive", true);
                     healthcareLabel.classed("active", false).classed("inactive", true);
-                } else if (xSelect === "age") {
+                } else if (ySelect === "smokes") {
                     obesityLabel.classed("active", false).classed("inactive", true);
                     smokesLabel.classed("active", true).classed("inactive", false);
                     healthcareLabel.classed("active", false).classed("inactive", true);
