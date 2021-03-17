@@ -328,7 +328,7 @@ function makeResponsive() {
                     } else if (xSelect === "age") {
                         povertyLabel.classed("active", false).classed("inactive", true);
                         ageLabel.classed("active", true).classed("inactive", false);
-                        incomeLabel.classed("active", true).classed("inactive", false);
+                        incomeLabel.classed("active", false).classed("inactive", true);
                     } else {
                         povertyLabel.classed("active", false).classed("inactive", true);
                         ageLabel.classed("active", false).classed("inactive", true);
@@ -361,7 +361,7 @@ function makeResponsive() {
                 } else if (xSelect === "age") {
                     obesityLabel.classed("active", false).classed("inactive", true);
                     smokesLabel.classed("active", true).classed("inactive", false);
-                    healthcareLabel.classed("active", true).classed("inactive", false);
+                    healthcareLabel.classed("active", false).classed("inactive", true);
                 } else {
                     obesityLabel.classed("active", false).classed("inactive", true);
                     smokesLabel.classed("active", false).classed("inactive", true);
