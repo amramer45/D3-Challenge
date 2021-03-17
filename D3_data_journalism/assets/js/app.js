@@ -2,7 +2,7 @@
 function makeResponsive() {
     
     // If SVG area isn't empty, remove it and replace it with a resized version of the chart
-    var svgArea = d3.select("#scatterPlot").select("svg");
+    var svgArea = d3.select("#scatter").select("svg");
 
     if(!svgArea.empty()) {
         svgArea.remove();
