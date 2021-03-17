@@ -36,7 +36,7 @@ function makeResponsive() {
 
     //Select variables
     var xSelect = "poverty";
-    var ySelect = "healthcare"
+    var ySelect = "healthcare";
 
     //Function used for updating x-scale var upon clicking on axis label
     function xScale(censusData, xSelect) {
@@ -116,7 +116,7 @@ function makeResponsive() {
         }
         //Household income
         else if (xSelect === 'income') {
-            return `$${value}`;
+            return `${value}`;
         }
         //Age
         else {
