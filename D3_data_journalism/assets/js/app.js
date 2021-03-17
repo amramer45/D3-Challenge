@@ -339,21 +339,31 @@ function makeResponsive() {
     //y axis labels event listener
     yLabelsGroup.selectAll("text")
         .on("click", function () {
+            //get value of selection
             var value = d3.select(this).attr("value");
 
+            //check if value is same as current axis
             if (value != ySelect) {
+
+                //replace ySelect with value
                 ySelect = value;
 
+                //update y scale for new data
                 yLinearScale = yScale(censusData, ySelect);
 
-                xAxis = renderAxisY(yLinearScale, yAxis);
+                //update y axis with transition
+                yAxis = renderAxisY(yLinearScale, yAxis);
 
+                //update circles with new y values
                 circlesGroup = renderCircles(circlesGroup, xLinearScale, xSelect, yLinearScale, ySelect);
 
+                //update text with new y values
                 textGroup = renderText(textGroup, xLinearScale, xSelect, yLinearScale, ySelect);
 
+                //update tooltips with new info
                 circlesGroup = updateToolTip(xSelect, ySelect, circlesGroup);
 
+                //change classes to change bold text
                 if (ySelect === "obesity") {
                     obesityLabel.classed("active", true).classed("inactive", false);
                     smokesLabel.classed("active", false).classed("inactive", true);
