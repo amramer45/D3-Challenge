@@ -8,9 +8,9 @@ function makeResponsive() {
         svgArea.remove();
     }
 
-    //Define SVG area
-    var svgWidth = 960;
-    var svgHeight = 620;
+    // Define SVG area dynamic dimensions
+    var svgHeight = (window.innerHeight) - 150;
+    var svgWidth = (window.innerWidth) - 250;
 
     //Define chart margins
     var chartMargin = {
@@ -20,7 +20,7 @@ function makeResponsive() {
         left: 100,
     };
 
-    //Definte chart area dimensions
+    //Define chart area dimensions
     var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
     var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
@@ -380,7 +380,7 @@ function makeResponsive() {
             }
         });
     })
-}
+};
 
 //call main function
 makeResponsive();
